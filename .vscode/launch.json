@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "comarques",
+            "cwd": "Tema1/comarques",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/comarquescli.dart"
+        },
+        {
+            "name": "comarques (comarques / Castello)",
+            "cwd": "Tema1/comarques",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/comarquescli.dart",
+            "args": [
+            "comarques",
+            "Castelló"
+            ]
+        },
+        {
+            "name": "comarques (provincies)",
+            "cwd": "Tema1/comarques",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/comarquescli.dart",
+            "args": [
+            "provincies"
+            ]
+        },
+        {
+            "name": "comarques (infocomarca)",
+            "cwd": "Tema1/comarques",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/comarquescli.dart",
+            "args": [
+            "infocomarca",
+            "La Ribera Baixa"
+            ]
+        },   
+    ]
+}
