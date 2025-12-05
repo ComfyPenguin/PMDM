@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://ban11o0l26osi"]
+
+[ext_resource type="Script" uid="uid://cs8uk1gw4xktj" path="res://scenes/break_out.gd" id="1_mayyr"]
+[ext_resource type="Texture2D" uid="uid://diyoqmwasl8ps" path="res://assets/Frame.png" id="1_sathh"]
+[ext_resource type="PackedScene" uid="uid://2qqpnbyw74yv" path="res://scenes/ball/ball.tscn" id="2_dtpc2"]
+[ext_resource type="PackedScene" uid="uid://bryrtf4d750pg" path="res://scenes/player/player.tscn" id="3_dtpc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtpc2"]
+size = Vector2(23.25, 1280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecjty"]
+size = Vector2(734, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sathh"]
+size = Vector2(692, 106)
+
+[node name="BreakOut" type="Node2D"]
+script = ExtResource("1_mayyr")
+
+[node name="Ball" parent="." instance=ExtResource("2_dtpc2")]
+position = Vector2(360, 640)
+
+[node name="Player" parent="." instance=ExtResource("3_dtpc2")]
+position = Vector2(360, 1150)
+motion_mode = 1
+
+[node name="Walls" type="Sprite2D" parent="."]
+position = Vector2(359.99997, 630.375)
+scale = Vector2(1.1593748, 2.9473956)
+texture = ExtResource("1_sathh")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 450)
+
+[node name="StaticBody2D-LeftWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-LeftWall"]
+position = Vector2(0, 640)
+shape = SubResource("RectangleShape2D_dtpc2")
+
+[node name="StaticBody2D-RightWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(310.5122, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-RightWall"]
+position = Vector2(0, 640)
+shape = SubResource("RectangleShape2D_dtpc2")
+
+[node name="StaticBody2D-TopWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-TopWall"]
+position = Vector2(362, 1)
+shape = SubResource("RectangleShape2D_ecjty")
+
+[node name="Area2D-GameLimit" type="Area2D" parent="Walls"]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D-GameLimit"]
+position = Vector2(360, 1333)
+shape = SubResource("RectangleShape2D_sathh")
+
+[node name="Reset_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="Walls/Area2D-GameLimit" to="." method="_on_area_2d_game_limit_body_entered"]
+[connection signal="timeout" from="Reset_Timer" to="." method="_on_reset_timer_timeout"]
