@@ -9,7 +9,7 @@ radius = 8.0
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_nv6q1")
 
-[node name="SpritesheetBreakout" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oqv3d")
 region_enabled = true
 region_rect = Rect2(32, 32, 16, 16)
