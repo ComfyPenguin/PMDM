@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dd3tya12yf3yi"]
 
 [ext_resource type="Texture2D" uid="uid://ctyyub5304d3w" path="res://assets/spritesheet-breakout.png" id="1_c27ow"]
-[ext_resource type="Script" uid="uid://cntx482ufw3kg" path="res://scenes/block/block.gd" id="1_vpped"]
+[ext_resource type="Script" uid="uid://cntx482ufw3kg" path="res://scenes/block/Block.gd" id="1_vpped"]
 
 [sub_resource type="Animation" id="Animation_vpped"]
 resource_name = "Broke"

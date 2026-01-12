@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2qqpnbyw74yv"]
 
-[ext_resource type="Script" uid="uid://dayyi7xvtn5v2" path="res://scenes/ball/ball.gd" id="1_nv6q1"]
+[ext_resource type="Script" uid="uid://dayyi7xvtn5v2" path="res://scenes/ball/Ball.gd" id="1_nv6q1"]
 [ext_resource type="Texture2D" uid="uid://ctyyub5304d3w" path="res://assets/spritesheet-breakout.png" id="1_oqv3d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]

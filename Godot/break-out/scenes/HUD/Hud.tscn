@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8vjd8bunss5"]
 
-[ext_resource type="PackedScene" uid="uid://dnngj173hfwiq" path="res://scenes/HUD/health/controlhealth.tscn" id="1_glunx"]
+[ext_resource type="PackedScene" uid="uid://dnngj173hfwiq" path="res://scenes/HUD/health/ControlHealth.tscn" id="1_glunx"]
 [ext_resource type="FontFile" uid="uid://cob7evjup5h7" path="res://assets/Pixel Game.otf" id="2_jjobl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glunx"]

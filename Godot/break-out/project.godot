@@ -16,6 +16,10 @@ run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameData="*res://scenes/globals/GameData.gd"
+
 [display]
 
 window/size/viewport_width=720
