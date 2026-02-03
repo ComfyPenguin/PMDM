@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthys_app/presentation/screens/home/home_screen.dart';
 
 void main() {
@@ -13,7 +14,8 @@ void main() {
     ),
   );*/
 
-  runApp(const HealthysApp());
+  // ProviderScope para poder usar Riverpod
+  runApp(const ProviderScope(child: HealthysApp()));
 }
 
 class HealthysApp extends StatelessWidget {

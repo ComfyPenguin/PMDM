@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthys_app/domain/entities/beguda.dart';
 import 'package:healthys_app/domain/entities/producte.dart';
+import 'package:healthys_app/presentation/providers/carret_notifier.dart';
 import 'package:healthys_app/presentation/screens/productes/widgets/info_row.dart';
 import 'package:healthys_app/presentation/screens/productes/widgets/quantity_bar.dart';
 import 'package:healthys_app/presentation/screens/productes/widgets/round_icon_button.dart';
@@ -8,43 +10,18 @@ import 'package:healthys_app/presentation/widgets/llista_alergens.dart';
 
 // Widget amb estat, ja que incorporarà la quantitat de productes afegits.
 
-class ProducteDetall extends StatefulWidget {
+class ProducteDetall extends ConsumerStatefulWidget {
   final Producte producte;
-  final int quantitat;
 
-  const ProducteDetall({
-    super.key,
-    required this.producte,
-    this.quantitat = 0, // Proporcionem la quantitat inicial
-  });
+  const ProducteDetall({super.key, required this.producte});
 
   @override
-  State<ProducteDetall> createState() => _ProducteDetallState();
+  ConsumerState<ProducteDetall> createState() => _ProducteDetallState();
 }
 
-class _ProducteDetallState extends State<ProducteDetall> {
-  // L'estat del widget ve determinat per la
-  // quantitat d'aquest producte que volem afegir
-  late int _quantitat;
-
-  @override
-  void initState() {
-    super.initState();
-    // Agafem la quantitat inicial del widget
-    // i la limitem entre 0 i 9999
-    _quantitat = widget.quantitat.clamp(0, 9999);
-  }
-
-  // Métode privat per actualitzar la quantitat de producte
-  void _actualitzaQuantitat(int value) {
-    final newValue = value.clamp(0, 9999); // Limitem entre 0 i 9999
-    // Si el valor a actualitzar és el mateix que la quantitat guardada
-    // en l'estat, no hem de fer res
-    if (newValue == _quantitat) return;
-    // En cas que el nou valor siga diferent a l'emmagatzemat,
-    // invoquem a setState per actualitzar l'estat i la interfície.
-    setState(() => _quantitat = newValue);
-  }
+class _ProducteDetallState extends ConsumerState<ProducteDetall> {
+  // Ya no necesitamos estado local _quantitat
+  // Se obtiene reactivamente del carretProvider
 
   // Funció per formatar el preu
   String _formatPrice(double price) {
@@ -55,6 +32,11 @@ class _ProducteDetallState extends State<ProducteDetall> {
   Widget build(BuildContext context) {
     final producte =
         widget.producte; // Agafem l'producte del widget associat a l'estat
+
+    // Obtener la cantidad del producto desde el carrito
+    final carret = ref.watch(carretProvider);
+    final quantitat = carret.quantitatProducte(producte.name);
+
     final theme = Theme.of(context); // Agafem el tema del context
     final cs = theme.colorScheme; // Agafem l'esquema de color del tema
 
@@ -329,7 +311,7 @@ class _ProducteDetallState extends State<ProducteDetall> {
                         // Si la quantitat de productes a la comanda és 0, afegim
                         // un botó per afegir-lo, i si no, un altre contenidor
                         // per afegir o llevar més quantitat (bàsicament un comptador)
-                        child: _quantitat == 0
+                        child: quantitat == 0
                             ? SizedBox(
                                 // Primer contenidor del switch
                                 width: double.infinity,
@@ -338,7 +320,12 @@ class _ProducteDetallState extends State<ProducteDetall> {
                                   // Les key són necessàries per fer l'animació
                                   // en el switch
                                   key: const ValueKey("add"),
-                                  onPressed: () => _actualitzaQuantitat(1),
+                                  onPressed: () {
+                                    // Usar el notifier para añadir el producto
+                                    ref
+                                        .read(carretProvider.notifier)
+                                        .afigProducte(producte, 1);
+                                  },
                                   icon: const Icon(Icons.add_shopping_cart),
                                   label: Text("Afegir · ${producte.price}€"),
                                 ),
@@ -346,13 +333,21 @@ class _ProducteDetallState extends State<ProducteDetall> {
                             : QuantityBar(
                                 // Segon contenidor del switch: Widget proivat defnit més avall
                                 key: const ValueKey("quantitat"),
-                                quantity: _quantitat,
+                                quantity: quantitat,
                                 unitPrice: producte.price,
                                 formatPrice: _formatPrice,
-                                onMinus: () =>
-                                    _actualitzaQuantitat(_quantitat - 1),
-                                onPlus: () =>
-                                    _actualitzaQuantitat(_quantitat + 1),
+                                onMinus: () {
+                                  // Usar el notifier para eliminar cantidad
+                                  ref
+                                      .read(carretProvider.notifier)
+                                      .eliminaProducte(producte, 1);
+                                },
+                                onPlus: () {
+                                  // Usar el notifier para añadir cantidad
+                                  ref
+                                      .read(carretProvider.notifier)
+                                      .afigProducte(producte, 1);
+                                },
                               ),
                       ),
                     ),
