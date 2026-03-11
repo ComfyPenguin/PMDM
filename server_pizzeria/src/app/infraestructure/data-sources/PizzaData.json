@@ -1,0 +1,112 @@
+[
+    {
+        "id": "margarita",
+        "nom": "Pizza Margarita",
+        "desc": "Base fina, tomaca, mozzarella i alfàbrega.",
+        "vegetariana": true,
+        "alergens": ["gluten", "lactosa"],
+        "img": "/img/margarita.png",
+        "preu": 9.99
+    },
+    {
+        "id": "verdures",
+        "nom": "Vegana de Verdures",
+        "desc": "Pimentó, ceba olives i tomaca",
+        "vegetariana": true,
+        "alergens": ["gluten"],
+        "img": "/img/vegetal.png",
+        "preu": 10.99
+    },
+    {
+        "id": "quatre_formatges",
+        "nom": "Quatre Formatges",
+        "desc": "Mozzarella, gorgonzola, parmesà i provolone.",
+        "vegetariana": true,
+        "alergens": ["gluten", "lactosa"],
+        "img": "/img/4_formatges.png",
+        "preu": 11.99
+    },
+    {
+        "id": "funghi",
+        "nom": "Pizza Funghi",
+        "desc": "Xampinyons i mozzarella",
+        "vegetariana": true,
+        "alergens": ["gluten", "lactosa"],
+        "img": "/img/funghi.png",
+        "preu": 10.99
+    },
+    {
+        "id": "diavola",
+        "nom": "Pizza Diavola",
+        "desc": "Pimentó roig picant, i salami",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "img": "/img/diavola.jpg",
+        "preu": 11.99
+    },
+    {
+        "id": "quatre_estacions",
+        "nom": "Pizza Quatre Estacions",
+        "desc": "Tomaca, pernil, xampinyons, salami, mozzarella, anxoves i orenga.",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "img": "/img/4_estacions.png",
+        "preu": 10.99
+    },
+    {
+        "id": "capricciosa",
+        "nom": "Pizza Capricciosa",
+        "desc": "Olives, xampinyons, pernil dolç i mozzarella",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 11.99
+    },
+    {
+        "id": "hawaiana",
+        "nom": "Pizza Hawaiana",
+        "desc": "Pernil dolç i pinya",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 11.99
+    },
+    {
+        "id": "carbonara",
+        "nom": "Pizza Carbonara",
+        "desc": "Ou, nata, formatge i bacon",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 11.99
+    },
+    {
+        "id": "marinera",
+        "nom": "Pizza Marinera",
+        "desc": "Tonyina, palets de mar, calamar i gambes",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa", "peix", "crustacis", "moluscos"],
+        "preu": 12.99
+    },
+    {
+        "id": "prosciutto_rucola",
+        "nom": "Pizza Prosciutto i Rúcula",
+        "desc": "Pernil cru i rúcola",
+        "vegetariana": false,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 12.99
+    },
+    {
+        "id": "calzone",
+        "nom": "Pizza Calzone",
+        "desc": "Pizza tancada amb tomaca, formatge i pernil",
+        "vegetariana": true,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 10.99
+    },
+    {
+        "id": "bianca",
+        "nom": "Pizza Bianca",
+        "desc": "Sense tomaca, Formatge, oli d'oliva i herbes",
+        "vegetariana": true,
+        "alergens": ["gluten", "lactosa"],
+        "preu": 10.99
+    }
+]

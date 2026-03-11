@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8vjd8bunss5"]
+[gd_scene format=3 uid="uid://c8vjd8bunss5"]
 
 [ext_resource type="PackedScene" uid="uid://dnngj173hfwiq" path="res://scenes/HUD/health/ControlHealth.tscn" id="1_glunx"]
+[ext_resource type="Script" uid="uid://duj82opoo4fq6" path="res://scenes/HUD/Hud.gd" id="1_qbosp"]
 [ext_resource type="FontFile" uid="uid://cob7evjup5h7" path="res://assets/Pixel Game.otf" id="2_jjobl"]
+[ext_resource type="Script" uid="uid://bgjh1yatrpt8f" path="res://scenes/HUD/health/ControlHealth.gd" id="3_cxoif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glunx"]
 bg_color = Color(0.8039216, 0.60784316, 0.3764706, 1)
@@ -51,18 +53,20 @@ shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r7rnh"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1522929502]
 follow_viewport_enabled = true
+script = ExtResource("1_qbosp")
 
-[node name="ControlHealth" parent="." instance=ExtResource("1_glunx")]
+[node name="ControlHealth" parent="." unique_id=1435193004 instance=ExtResource("1_glunx")]
 custom_minimum_size = Vector2(1, 0)
 offset_left = 20.0
 offset_top = 40.0
 offset_right = 65.0
 offset_bottom = 56.0
 scale = Vector2(3, 3)
+script = ExtResource("3_cxoif")
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=852722352]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -77,7 +81,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="."]
+[node name="GameOverLabel" type="Label" parent="." unique_id=1224689826]
 visible = false
 anchors_preset = 14
 anchor_top = 0.5
@@ -94,7 +98,7 @@ OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewGameButton" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1277284172]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5

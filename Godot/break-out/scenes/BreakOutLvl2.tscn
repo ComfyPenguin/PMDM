@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://b8wd2y105vaj8"]
+
+[ext_resource type="Script" uid="uid://cs8uk1gw4xktj" path="res://scenes/BreakOut.gd" id="1_pyr0g"]
+[ext_resource type="PackedScene" uid="uid://c8vjd8bunss5" path="res://scenes/HUD/Hud.tscn" id="2_u3f6e"]
+[ext_resource type="Texture2D" uid="uid://cpffsqr0blkyj" path="res://assets/Background1.png" id="3_wx0pc"]
+[ext_resource type="PackedScene" uid="uid://2qqpnbyw74yv" path="res://scenes/ball/Ball.tscn" id="4_tg44o"]
+[ext_resource type="PackedScene" uid="uid://bryrtf4d750pg" path="res://scenes/player/Player.tscn" id="5_haoqi"]
+[ext_resource type="Texture2D" uid="uid://diyoqmwasl8ps" path="res://assets/Frame.png" id="6_hucvv"]
+[ext_resource type="PackedScene" uid="uid://dd3tya12yf3yi" path="res://scenes/block/Block.tscn" id="7_m17bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtpc2"]
+size = Vector2(23.25, 1280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecjty"]
+size = Vector2(734, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sathh"]
+size = Vector2(692, 106)
+
+[node name="BreakOut" type="Node2D" unique_id=184771950]
+script = ExtResource("1_pyr0g")
+
+[node name="HUD" parent="." unique_id=1632413902 instance=ExtResource("2_u3f6e")]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1056867371]
+position = Vector2(359, 641)
+scale = Vector2(1.15, 2.7)
+texture = ExtResource("3_wx0pc")
+
+[node name="Ball" parent="." unique_id=55007020 instance=ExtResource("4_tg44o")]
+position = Vector2(360, 1125)
+
+[node name="Player" parent="." unique_id=1552802454 instance=ExtResource("5_haoqi")]
+position = Vector2(360, 1150)
+motion_mode = 1
+
+[node name="Walls" type="Sprite2D" parent="." unique_id=2046736360]
+position = Vector2(359.99997, 630.375)
+scale = Vector2(1.1593748, 2.9473956)
+texture = ExtResource("6_hucvv")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 450)
+
+[node name="StaticBody2D-LeftWall" type="StaticBody2D" parent="Walls" unique_id=689232863]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-LeftWall" unique_id=849118842]
+position = Vector2(0, 640)
+shape = SubResource("RectangleShape2D_dtpc2")
+
+[node name="StaticBody2D-RightWall" type="StaticBody2D" parent="Walls" unique_id=2103448109]
+position = Vector2(310.5122, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-RightWall" unique_id=650172597]
+position = Vector2(0, 640)
+shape = SubResource("RectangleShape2D_dtpc2")
+
+[node name="StaticBody2D-TopWall" type="StaticBody2D" parent="Walls" unique_id=809499391]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D-TopWall" unique_id=1136491708]
+position = Vector2(362, 1)
+shape = SubResource("RectangleShape2D_ecjty")
+
+[node name="Area2D-GameLimit" type="Area2D" parent="Walls" unique_id=1394196085]
+position = Vector2(-310.51215, -213.87529)
+scale = Vector2(0.8625338, 0.3392826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D-GameLimit" unique_id=1431253790]
+position = Vector2(360, 1333)
+shape = SubResource("RectangleShape2D_sathh")
+
+[node name="Reset_Timer" type="Timer" parent="." unique_id=1246155372]
+one_shot = true
+
+[node name="Blocks" type="Node" parent="." unique_id=549182140]
+
+[node name="Block" parent="Blocks" unique_id=687335954 instance=ExtResource("7_m17bc")]
+position = Vector2(72, 372)
+
+[node name="Block3" parent="Blocks" unique_id=657404128 instance=ExtResource("7_m17bc")]
+position = Vector2(456, 300)
+
+[node name="Block24" parent="Blocks" unique_id=1354499274 instance=ExtResource("7_m17bc")]
+position = Vector2(72, 300)
+
+[node name="Block25" parent="Blocks" unique_id=672962356 instance=ExtResource("7_m17bc")]
+position = Vector2(264, 252)
+
+[node name="Block26" parent="Blocks" unique_id=148066859 instance=ExtResource("7_m17bc")]
+position = Vector2(456, 252)
+
+[node name="Block5" parent="Blocks" unique_id=2137852132 instance=ExtResource("7_m17bc")]
+position = Vector2(264, 300)
+
+[node name="Block8" parent="Blocks" unique_id=499487279 instance=ExtResource("7_m17bc")]
+position = Vector2(264, 180)
+
+[node name="Block9" parent="Blocks" unique_id=2103663912 instance=ExtResource("7_m17bc")]
+position = Vector2(456, 180)
+
+[node name="Block10" parent="Blocks" unique_id=1935267057 instance=ExtResource("7_m17bc")]
+position = Vector2(648, 372)
+
+[node name="Block11" parent="Blocks" unique_id=160018201 instance=ExtResource("7_m17bc")]
+position = Vector2(264, 204)
+
+[node name="Block13" parent="Blocks" unique_id=1157543490 instance=ExtResource("7_m17bc")]
+position = Vector2(168, 276)
+
+[node name="Block14" parent="Blocks" unique_id=590656178 instance=ExtResource("7_m17bc")]
+position = Vector2(168, 156)
+
+[node name="Block16" parent="Blocks" unique_id=199299758 instance=ExtResource("7_m17bc")]
+position = Vector2(168, 348)
+
+[node name="Block12" parent="Blocks" unique_id=745252245 instance=ExtResource("7_m17bc")]
+position = Vector2(456, 204)
+
+[node name="Block21" parent="Blocks" unique_id=1388376477 instance=ExtResource("7_m17bc")]
+position = Vector2(168, 396.00003)
+
+[node name="Block31" parent="Blocks" unique_id=363815135 instance=ExtResource("7_m17bc")]
+position = Vector2(552, 396)
+
+[node name="Block22" parent="Blocks" unique_id=628622072 instance=ExtResource("7_m17bc")]
+position = Vector2(264, 372)
+
+[node name="Block23" parent="Blocks" unique_id=1079181271 instance=ExtResource("7_m17bc")]
+position = Vector2(456, 372)
+
+[node name="Block18" parent="Blocks" unique_id=1418516128 instance=ExtResource("7_m17bc")]
+position = Vector2(552, 156)
+
+[node name="Block29" parent="Blocks" unique_id=1764352379 instance=ExtResource("7_m17bc")]
+position = Vector2(552, 276)
+
+[node name="Block30" parent="Blocks" unique_id=1918121115 instance=ExtResource("7_m17bc")]
+position = Vector2(72, 180)
+
+[node name="Block32" parent="Blocks" unique_id=1339378034 instance=ExtResource("7_m17bc")]
+position = Vector2(648, 180.00003)
+
+[node name="Block34" parent="Blocks" unique_id=1450509814 instance=ExtResource("7_m17bc")]
+position = Vector2(648, 204.00003)
+
+[node name="Block36" parent="Blocks" unique_id=305068497 instance=ExtResource("7_m17bc")]
+position = Vector2(72, 204)
+
+[node name="Block37" parent="Blocks" unique_id=1634018681 instance=ExtResource("7_m17bc")]
+position = Vector2(648, 300.00003)
+
+[node name="Block40" parent="Blocks" unique_id=1702490422 instance=ExtResource("7_m17bc")]
+position = Vector2(168, 228)
+
+[node name="Block41" parent="Blocks" unique_id=741775254 instance=ExtResource("7_m17bc")]
+position = Vector2(552, 228)
+
+[node name="Block20" parent="Blocks" unique_id=1260697357 instance=ExtResource("7_m17bc")]
+position = Vector2(552, 348)
+
+[connection signal="body_entered" from="Walls/Area2D-GameLimit" to="." method="_on_area_2d_game_limit_body_entered"]
+[connection signal="timeout" from="Reset_Timer" to="." method="_on_reset_timer_timeout"]
